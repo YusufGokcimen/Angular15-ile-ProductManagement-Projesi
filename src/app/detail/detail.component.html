@@ -1,0 +1,28 @@
+<h2>{{product?.Name}}</h2>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <img src="assets/images/{{product?.Image}}" alt="" class="img-fluid">
+    </div>
+    <div class="col-6 ps-4">
+        <h3>{{product?.Name}}</h3>
+        <hr>
+        <span>Stock: {{product?.Stock}}</span>
+        <br>
+        <span class="badge bg-success"> % {{product?.Discount}} indirim</span>
+        <br>
+        <span class="text-danger fs-6"><del>{{product?.Price}} TL</del></span>
+        <span class="text-danger fs-5">{{ (product?.Price ?? 0)-((product?.Price ?? 0) / 100)*(product?.Discount ?? 0) + " ₺"}}</span>
+        <p>
+            {{product?.Description}}
+        </p>
+        <div class="input-group mb-3 stock">
+            <button class="btn btn-primary" type="button " (click)="minusProduct()" id="button-addon1">-</button>
+            <input type="number" min="0" max="{{product?.Stock}}" #Quantity value="{{basketNumber}}" class="form-control text-center bg-white text-primary" disabled placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <button class="btn btn-primary" type="button" (click)="plusProduct(product?.Stock)" id="button-addon1">+</button>
+
+        </div>
+        <button class="btn btn-primary" (click)="addBasket(product?.Id,Quantity.value)">Sepete Ekle</button>
+
+    </div>
+</div>

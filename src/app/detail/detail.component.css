@@ -1,0 +1,14 @@
+.stock input::-webkit-outer-spin-button,
+.stock input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.stock input[type=number] {
+  -moz-appearance: textfield;
+ 
+}
+.stock {
+  width: 120px!important;
+}

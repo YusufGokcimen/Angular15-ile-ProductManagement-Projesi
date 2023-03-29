@@ -1,0 +1,28 @@
+<p>Api Kullanımı</p>
+<div class="row justify-content-center my-4" >
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" #input>
+                <button (click)="postValue(input)" class="btn btn-primary form-control">Add Value</button>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>User I</th>
+        <th>Title</th>
+        <th>Settings</th>
+    </tr>
+    <tr *ngFor="let post of postList">
+        <td>{{post.id}}</td>
+        <td>{{post.userId}}</td>
+        <td>{{post.title}}</td>
+        <td>
+            <button class="btn btn-success active" (click)="updateValue(post,input)">Update</button>
+            <button class="btn btn-danger active ms-2" (click)="deleteValue(post)">Delete</button>
+        </td>
+    </tr>
+</table>

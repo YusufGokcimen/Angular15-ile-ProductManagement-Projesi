@@ -1,0 +1,52 @@
+<h2>Product List</h2>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <div class="card my-5" *ngIf="secilenUrun">
+            <div class="card-header">
+                <h3>Selected Product</h3>
+            </div>
+            <div class="card-body">
+                <span class="badge bg-warning">{{secilenUrun.Id}}</span>
+                <div class="alert alert-primary" role="alert">
+                     {{secilenUrun.Name}}
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="secilenUrun.Name">
+                    <button class="btn btn-danger" (click)="leave()">Close</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-9">
+        <div class="row my-5" >
+            <div class="col-3 mb-4" *ngFor="let product of productList">
+                <div class="card"  [class.bg-success]="product==secilenUrun" >
+                    <img src="assets/images/{{product.Image}}" class="card-img-top">
+                    <div class="card-body">
+                        <span class="badge bg-warning">{{"% "+product.Discount}}</span>
+                        <br>
+                        <span class="badge bg-danger"><del>{{product.Price +" TL"}}</del></span>
+                        <span class="badge bg-info ">{{ (product?.Price ?? 0)-((product?.Price ?? 0) / 100)*(product?.Discount ?? 0) + " ₺"}}</span>
+                        <div class="alert alert-primary" role="alert">
+                            {{product.Name}}
+                        </div>
+                        <button class="btn btn-primary" (click)="selectProduct(product)">Select</button>
+                        <a class="btn btn-danger" routerLink="/Detail/{{product.Id}}" >Detail</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <app-product class="col-3"></app-product>
+    <app-product class="col-3"></app-product>
+    <app-product class="col-3"></app-product>
+    <app-product class="col-3"></app-product>
+</div>
+
